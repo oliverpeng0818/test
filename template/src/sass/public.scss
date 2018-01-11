@@ -1,0 +1,81 @@
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+table,
+th,
+td,
+form,
+input,
+button {
+    margin: 0;
+    padding: 0;
+    font-family: "microsoft yahei";
+    font-family: "微软雅黑";
+}
+input[type='button'],input[type='text'],input[type='password'],input[type='submit']{
+    -webkit-appearance:none;
+    outline:none;
+    padding: 0;
+    margin: 0;
+}
+ul,
+li {
+    list-style: none;
+}
+img {
+    border: none;
+    outline: none;
+};
+img:active {
+    outline: none;
+}
+a,
+a:hover {
+    text-decoration: none;
+    outline: none;
+}
+//公共样式
+$color_d70050: #d70050;
+//定义宽，高
+@mixin w_h($width, $height) {
+    width: $width;
+    height: $height;
+}
+//定义背景
+@mixin bg($backgroundcolor) {
+    background-color: $backgroundcolor;
+}
+//定义圆角
+@mixin radius($num){
+    border-radius: $num;
+    -webkit-border-radius: $num;
+    -moz-border-radius: $num;
+    -o-border-radius: $num;
+    -ms-border-radius: $num;
+}
+//定义边框
+@mixin border($num){
+    border:1px solid $num;
+}
+///*---滚动条大小--*/
+// ::-webkit-scrollbar {
+//  @include w_h(1px,1px);
+//}
+///*---滚动框背景样式--*/
+// ::-webkit-scrollbar-track-piece {
+//  @include bg(#ff0000);
+//  -webkit-border-radius: 0;
+//}

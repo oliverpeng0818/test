@@ -1,0 +1,127 @@
+<!--
+ 	*@Author: Andypeng
+	 *@Date:   2017-12-28 14:21:00
+	 *@Main:  新闻详情
+	 * -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>新闻详情 </title>
+        <link rel="stylesheet" type="text/css" href="css/basic.css" />
+        <link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/font.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" /> </head>
+    <body>
+        <header class="mui-bar mui-bar-nav">
+            <a class="iconfont icon-fanhui mui-icon mui-pull-left"></a>
+            <a id="menu-btn2" class="iconfont icon-fenxiang mui-icon mui-pull-right"></a>
+        </header>
+        <div class="mui-content newsParticulars">
+            <h1>我校六项成果荣获2017年福建省高等教育教学成果奖</h1>
+            <div class="times"> 发布时间：2017-12-28 | 浏览次数：215 </div>
+            <img src="images/banner2.png" />
+            <span class="tips">
+                <i></i>上图为会场照片 </span>
+            <p>世界上首条环岛高铁已经进入开通前奏，不久，游客“坐着高铁环游海南”即将成为现实。届时，我们海南全岛有十二个市县将被环岛高铁串联起来。儋州作为海南西部的中心城市，也设有三个站点，而白马井站则是儋州境内最大的站点，今天就让我们一起走进白马井站，看看那里开通前的准备情况。</p>
+            <p>世界上首条环岛高铁已经进入开通前奏，不久，游客“坐着高铁环游海南”即将成为现实。届时，我们海南全岛有十二个市县将被环岛高铁串联起来。儋州作为海南西部的中心城市，也设有三个站点，而白马井站则是儋州境内最大的站点，今天就让我们一起走进白马井站，看看那里开通前的准备情况。</p>
+            <div class="share" id="menu-btn">
+                <span class="iconfont icon-fenxiang"></span> 分享 </div>
+            <!--这个节点用于测试-->
+            <div id="info"></div>
+        </div>
+        <div id="menu-wrapper" class="menu-wrapper mui-hidden">
+            <div id="menu">
+                <ul class="mui-clearfix mui-table-view-inverted nav" >
+                    <li class="py-weixin">
+                        <a href="javascript:;"> 微信 </a>
+                    </li>
+                    <li class="py-pyq">
+                        <a href="javascript:;"> 朋友圈 </a>
+                    </li>
+                    <li class="py-qq">
+                        <a href="javascript:;"> QQ </a>
+                    </li>
+                    <li class="py-kjian">
+                        <a href="javascript:;"> QQ空间 </a>
+                    </li>
+                    <li class="cancel py-quxiao">
+                        <a href="javascript:;">取消</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="menu-backdrop" class="menu-backdrop"></div>
+        <a href="#tanchuang">大厦 </a>
+        <div id="tanchuang" class=" mui-popover mui-popover-action mui-popover-bottom ">
+            <ul class="mui-clearfix mui-table-view-inverted nav" id="mask">
+                <li class="py-weixin">
+                    <a href="javascript:;"> 微信 </a>
+                </li>
+                <li class="py-pyq">
+                    <a href="javascript:;"> 朋友圈 </a>
+                </li>
+                <li class="py-qq">
+                    <a href="javascript:;"> QQ </a>
+                </li>
+                <li class="py-kjian">
+                    <a href="javascript:;"> QQ空间 </a>
+                </li>
+                <li class="cancel py-quxiao">
+                    <a href="javascript:;">取消</a>
+                </li>
+            </ul>
+        </div>
+        
+        <script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            mui.init();
+            var menuWrapper = document.getElementById("menu-wrapper");
+            var menu = document.getElementById("menu");
+            var menuWrapperClassList = menuWrapper.classList;
+            var backdrop = document.getElementById("menu-backdrop");
+            var info = document.getElementById("info");
+            backdrop.addEventListener('tap', toggleMenu);
+            document.getElementById("menu-btn").addEventListener('tap', toggleMenu);
+            document.getElementById("menu-btn2").addEventListener('tap', toggleMenu);
+            //下沉菜单中的点击事件
+            mui('#menu').on('tap', 'a', function() {
+                toggleMenu();
+                info.innerHTML = '你已选择：' + this.innerHTML;
+                mui.toast('分享成功', {
+                    type: 'div'
+                });
+            });
+            mui('#tanchuang').on('tap', 'li', function() {
+               mui('#tanchuang').popover('toggle')
+                info.innerHTML = '你已选择：' + this.innerHTML;
+            });
+            var busying = false;
+
+            function toggleMenu() {
+                if(busying) {
+                    return;
+                }
+                busying = true;
+                if(menuWrapperClassList.contains('mui-active')) {
+                    document.body.classList.remove('menu-open');
+                    menuWrapper.className = 'menu-wrapper  animated';
+                    menu.className = 'menu bounce-out-up animated';
+                    setTimeout(function() {
+                        backdrop.classList.remove('mui-backdrop');
+                        menuWrapper.classList.add('hidden');
+                    }, 500);
+                } else {
+                    document.body.classList.add('menu-open');
+                    menuWrapper.className = 'menu-wrapper  animated mui-active';
+                    menu.className = 'menu bounce-in-down animated';
+                    backdrop.classList.add('mui-backdrop');
+                }
+                setTimeout(function() {
+                    busying = false;
+                }, 500);
+            }
+        </script>
+    </body>
+</html>

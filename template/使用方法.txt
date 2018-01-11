@@ -1,0 +1,6 @@
+1.安装node目前版本为8.9.0
+2.安装gulp 命令行为npm install --global gulp  目前gulp版本为3.9.1
+3.down下来需要初始化 npm init  一路enter为止
+4.下载gulp 插件  npm install
+5.开发模式下直接gulp dev 启动
+6.打包gulp build 
